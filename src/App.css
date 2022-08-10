@@ -8,7 +8,14 @@ body{
   align-items: center;
   min-height: 100vh;
   width: 100vw;
-  background-color:#2979ff;
+  
+}
+.draLeft{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 .nav{
   width: 100vw;
@@ -37,7 +44,24 @@ body{
   /* background-color: azure; */
   
 }
+.filter{
+  
+  margin-top: 10%;
+  
+  width: 90vw;
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* background-color: azure; */
+  
+}
 .prod div:hover{
+  box-shadow:5px 5px 10px 8px black;
+}
+.filter div:hover{
   box-shadow:5px 5px 10px 8px black;
 }
 .links{
@@ -62,13 +86,39 @@ td{
   top: 0;
   font-weight: bold;
 }
-
+.search{
+  padding:2% 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+.drawe .search{
+  display: none;
+  width:70vw
+ }
+ #darkPage{
+  background-image: linear-gradient(to top right ,rgb(92, 92, 92),rgb(49, 49, 49), black ,black);
+ }
+ #lightPage{
+  background-color:#2371f8;
+ }
 @media only screen and (max-width:800px){
   .prod{
     flex-direction: column;
     width: 100vw;
     margin-top: 15vh;
     align-items: center;
+  }
+  .filter{
+  
+    flex-direction: column;
+    width: 100vw;
+    margin-top: 20vh;
+    align-items: center;
+    /* background-color: azure; */
+    
   }
   .prod div{
     min-width: 98vw;
@@ -97,4 +147,17 @@ td{
   .nav button{
     width:20px;
   }
+   .nav .search{
+    display: none;
+   }
+   .drawe .search{
+    display: block;
+    padding: 0%;
+    padding-bottom: 4%;
+    border: none;
+   }
+   .search input, .iconSearch{
+    font-size: 20px;
+   }
+
 }

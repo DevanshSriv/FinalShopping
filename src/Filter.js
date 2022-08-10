@@ -9,13 +9,12 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
 import { Tooltip } from '@mui/material';
-import Switch from '@mui/material/Switch';
-
+import { useNavigate } from 'react-router-dom';
 let doc=document.body.getElementsByTagName('div')
 doc.info.style.display='none'
 let can=document.body.getElementsByTagName('canvas')
 can.c.style.display='none'
-const Products = () => {
+const Filter = () => {
     
     const style = {
         position: 'absolute',
@@ -57,12 +56,7 @@ const Products = () => {
   const handleClose1 = () => setOpen1(false);
 
     const Cont=useContext(Context)
-   useEffect(()=>{
-    let a=fetch('https://fakestoreapi.com/products')
-    a.then(res=>res.json())
-    .then(json=>Cont.products[1](json))
-   },[])
-   
+   const nav=useNavigate()
 
    const handleCart=(sel)=>{
     sel['quan']=1
@@ -82,11 +76,50 @@ const Products = () => {
        }
        setOpen(false)
     }
-   console.log(Cont.products[0])
+   useEffect(()=>{
+    if(Cont.search[0]==''){
+        nav('/')
+    }
+   },[Cont.search[0]])
+   useEffect(()=>{
+    if(Cont.swit[0]==true){
+      
+      let y=document.querySelectorAll('.cards')
+      y.forEach(item=>{item.setAttribute('id','darkPage')})
+      let h=document.querySelectorAll("h1, h2, h3, h4, h5, h6,placeholder")
+      h.forEach(item=>{item.setAttribute('style','color:white')})
+    }else{
+      let x=document.getElementsByClassName('App')
+      x[0].setAttribute('id','lightPage')
+      let y=document.querySelectorAll('.cards')
+      y.forEach(item=>{item.removeAttribute('id')})
+      let h=document.querySelectorAll("h1, h2, h3, h4, h5, h6,placeholder")
+      h.forEach(item=>{item.removeAttribute('style')})
+    }
+    
+  },[Cont.swit[0]])
+  useEffect(()=>{
+    if(Cont.swit[0]==true){
+      
+      let card=document.querySelectorAll('.cards')
+      card.forEach(item=>{item.setAttribute('id','darkPage')})
+      let h=document.querySelectorAll("h1, h2, h3, h4, h5, h6,placeholder")
+      h.forEach(item=>{item.setAttribute('style','color:white')})
+    }else{
+      let x=document.getElementsByClassName('App')
+      x[0].setAttribute('id','lightPage')
+      let card=document.querySelectorAll('.cards')
+      card.forEach(item=>{item.removeAttribute('id')})
+      let h=document.querySelectorAll("h1, h2, h3, h4, h5, h6,placeholder")
+      h.forEach(item=>{item.removeAttribute('style')})
+    }
+    
+  },[])
   return (
-    <div className='prod'>
-          {Cont.products[0].map((items,key)=> <Card key={key} sx={{ maxWidth:'30%' ,marginY:'3%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-evenly',minHeight:'50vh',
-          backgroundColor:'#638bcf'
+    <div className='filter'>
+          {Cont.filter[0].map((items,key)=> <Card key={key} sx={{ maxWidth:'50%' ,marginY:'3%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-evenly',minHeight:'50vh',
+          backgroundColor:'#638bcf',
+          marginX:'5%'
           
         }} component='div' className='cards' >
           <Tooltip arrow title={<h2>Double Click To Preview</h2>}>
@@ -94,7 +127,7 @@ const Products = () => {
         component="img"
         sx={{width:'30%'}}
         src={items.image}
-        id={items.id} onDoubleClick={(e)=>{handleOpen1(); let sele1=Cont.products[0].filter(items=> e.target.id==items.id);setSele(sele1[0])}}
+        id={items.id} onDoubleClick={(e)=>{handleOpen1(); let sele1=Cont.filter[0].filter(items=> e.target.id==items.id);setSele(sele1[0])}}
         
       />
       </Tooltip>
@@ -105,7 +138,7 @@ const Products = () => {
       </CardContent>
       <CardActions component='in'>
         <Tooltip arrow title={<h2>Click To Know Details</h2>}>
-        <Button size="small"  variant='contained' color='warning' id={items.id} onClick={(e)=>{handleOpen(); let sele1=Cont.products[0].filter(items=> e.target.id==items.id);setSele(sele1[0])}}>Learn More</Button>
+        <Button size="small"  variant='contained' color='warning' id={items.id} onClick={(e)=>{handleOpen(); let sele1=Cont.filter[0].filter(items=> e.target.id==items.id);setSele(sele1[0])}}>Learn More</Button>
         </Tooltip>
       </CardActions>
     </Card>)}
@@ -161,4 +194,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default Filter
