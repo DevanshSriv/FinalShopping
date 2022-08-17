@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
 import { Tooltip } from '@mui/material';
-import Switch from '@mui/material/Switch';
 
 let doc=document.body.getElementsByTagName('div')
 doc.info.style.display='none'
@@ -84,9 +83,14 @@ const Products = () => {
     }
    console.log(Cont.products[0])
   return (
+    <>
+    <div className='offer'><img src='offer1.png' width='100%' alt=''/>
+    
+    </div>
     <div className='prod'>
-          {Cont.products[0].map((items,key)=> <Card key={key} sx={{ maxWidth:'30%' ,marginY:'3%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-evenly',minHeight:'50vh',
-          backgroundColor:'#638bcf'
+          {Cont.products[0].map((items,key)=> <Card key={key} sx={{ maxWidth:'40%' ,marginY:'3%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-evenly',minHeight:'50vh',
+          backgroundColor:'#638bcf',
+          paddingY:'4%'
           
         }} component='div' className='cards' >
           <Tooltip arrow title={<h2>Double Click To Preview</h2>}>
@@ -98,7 +102,7 @@ const Products = () => {
         
       />
       </Tooltip>
-      <CardContent component='inp' >
+      <CardContent component='div' >
         <Typography gutterBottom variant="h5" sx={{wordWrap:'wrap',width:'22vw'}} component='h5'>
           {items.title}
         </Typography>
@@ -158,6 +162,7 @@ const Products = () => {
         </Box>
       </Modal>
     </div>
+    </>
   )
 }
 

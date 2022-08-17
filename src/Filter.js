@@ -117,9 +117,10 @@ const Filter = () => {
   },[])
   return (
     <div className='filter'>
-          {Cont.filter[0].map((items,key)=> <Card key={key} sx={{ maxWidth:'50%' ,marginY:'3%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-evenly',minHeight:'50vh',
+          {Cont.filter[0].map((items,key)=> <Card key={key} sx={{ maxWidth:'40%' ,marginY:'3%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-evenly',minHeight:'50vh',
           backgroundColor:'#638bcf',
-          marginX:'5%'
+          marginX:'5%',
+          paddingY:'3%'
           
         }} component='div' className='cards' >
           <Tooltip arrow title={<h2>Double Click To Preview</h2>}>

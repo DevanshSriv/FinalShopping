@@ -17,6 +17,7 @@ window.requestAnimationFrame = (function(){
 /**
  * Vector
  */
+
 function Vector(x, y) {
     this.x = x || 0;
     this.y = y || 0;
@@ -454,7 +455,6 @@ Particle.prototype = (function(o) {
 
 
     // GUI
-
     gui = new GUI();
     gui.add(control, 'particleNum', 0, 500).step(1).name('Particle Num').onChange(function() {
         var n = (control.particleNum | 0) - particles.length;
@@ -467,6 +467,8 @@ Particle.prototype = (function(o) {
     gui.add(GravityPoint, 'interferenceToPoint').name('Interference Between Point');
     gui.add(obj,'Go_Back');
     gui.close();
+    
+   
 
 
     // Start Update

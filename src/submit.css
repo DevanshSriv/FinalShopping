@@ -1,4 +1,4 @@
-
+.consfirm{}
 @-webkit-keyframes extend {
     0% {
         width: 600px;
@@ -120,7 +120,7 @@ input, button, submit {
     color: #6fb07f
     }
 
-img {
+#tick {
     position: absolute;
     top: 0;
     left: 0;
@@ -152,7 +152,7 @@ img {
     animation-fill-mode: forwards
     }
 
-.btn:focus > img {
+.btn:focus > #tick {
     /*animation*/
     -webkit-animation: appear 1s ease-in-out;
     -ms-animation: appear 1s ease-in-out;
